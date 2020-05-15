@@ -20,28 +20,28 @@
 <link data-react-helmet="true" rel="shortcut icon" href="/img/favicon.svg">
 
 
-<link rel="stylesheet" href="/styles.73ab9c40.css">
+<link rel="stylesheet" href="/styles.253e64a9.css">
 
 
-<link rel="preload" href="/styles.adb4430b.js" as="script">
+<link rel="preload" href="/styles.2e8c563f.js" as="script">
 
-<link rel="preload" href="/runtime~main.445d8d31.js" as="script">
+<link rel="preload" href="/runtime~main.1c0a9e01.js" as="script">
 
-<link rel="preload" href="/main.2b1acf6e.js" as="script">
+<link rel="preload" href="/main.a53066a6.js" as="script">
 
-<link rel="preload" href="/1.f87fcd0b.js" as="script">
+<link rel="preload" href="/1.e750d4d7.js" as="script">
 
-<link rel="preload" href="/2.3bf60cdf.js" as="script">
+<link rel="preload" href="/2.f5b74bcc.js" as="script">
 
-<link rel="preload" href="/3.d9e1fa3e.js" as="script">
+<link rel="preload" href="/3.1b025bac.js" as="script">
 
-<link rel="preload" href="/1be78505.b5e0d2a4.js" as="script">
+<link rel="preload" href="/1be78505.4747757c.js" as="script">
 
-<link rel="preload" href="/20ac7829.cbfaea42.js" as="script">
+<link rel="preload" href="/20ac7829.52f9a0c2.js" as="script">
 
-<link rel="preload" href="/17896441.17f09171.js" as="script">
+<link rel="preload" href="/17896441.3aca8210.js" as="script">
 
-<link rel="preload" href="/11716ba2.210fcd79.js" as="script">
+<link rel="preload" href="/11716ba2.f9bcba3e.js" as="script">
 
 </head>
 <body>
@@ -59,25 +59,25 @@
 </span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token keyword" style="font-style:italic">func</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">GetSessionInfo</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">ctx Context</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">*</span><span class="token plain">SessionInfo</span></div></div></div></div></div><p>The session context also stores some session metadata, which can be retrieved by the <code>GetSessionInfo()</code> API. If the context passed in doesn&#x27;t contain any session metadata, this API will return a <code>nil</code> pointer.</p><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="concurrent-session-limitation"></a><a aria-hidden="true" tabindex="-1" class="hash-link" href="#concurrent-session-limitation" title="Direct link to heading">#</a>Concurrent Session Limitation</h2><p>To limit the number of concurrent sessions running on a worker, set the <code>MaxConcurrentSessionExecutionSize</code> field of <code>worker.Options</code> to the desired value. By default this field is set to a very large value, so there&#x27;s no need to manually set it if no limitation is needed.</p><p>If a worker hits this limitation, it won&#x27;t accept any new <code>CreateSession()</code> requests until one of the existing sessions is completed. <code>CreateSession()</code> will return an error if the session can&#x27;t be created within <code>CreationTimeout</code>.</p><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="recreate-session"></a><a aria-hidden="true" tabindex="-1" class="hash-link" href="#recreate-session" title="Direct link to heading">#</a>Recreate Session</h2><p>For long-running sessions, you may want to use the <code>ContinueAsNew</code> feature to split the workflow into multiple runs when all activities need to be executed by the same worker. The <code>RecreateSession()</code>  API is designed for such a use case.</p><div class="mdxCodeBlock_iHAB"><div class="codeBlockContent_32p_"><button type="button" aria-label="Copy code to clipboard" class="copyButton_1BYj">Copy</button><div tabindex="0" class="prism-code language-go codeBlock_19pQ"><div class="codeBlockLines_2n9r" style="color:#bfc7d5;background-color:#292d3e"><div class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">func</span><span class="token plain"> </span><span class="token function" style="color:rgb(130, 170, 255)">RecreateSession</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">ctx Context</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> recreateToken </span><span class="token punctuation" style="color:rgb(199, 146, 234)">[</span><span class="token punctuation" style="color:rgb(199, 146, 234)">]</span><span class="token builtin" style="color:rgb(130, 170, 255)">byte</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> sessionOptions </span><span class="token operator" style="color:rgb(137, 221, 255)">*</span><span class="token plain">SessionOptions</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">Context</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(130, 170, 255)">error</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span></div></div></div></div></div><p>Its usage is the same as <code>CreateSession()</code> except that it also takes in a <code>recreateToken</code>, which is needed to create a new session on the same worker as the previous one. You can get the token by calling the <code>GetRecreateToken()</code> method of the <code>SessionInfo</code> object.</p><div class="mdxCodeBlock_iHAB"><div class="codeBlockContent_32p_"><button type="button" aria-label="Copy code to clipboard" class="copyButton_1BYj">Copy</button><div tabindex="0" class="prism-code language-go codeBlock_19pQ"><div class="codeBlockLines_2n9r" style="color:#bfc7d5;background-color:#292d3e"><div class="token-line" style="color:#bfc7d5"><span class="token plain">token </span><span class="token operator" style="color:rgb(137, 221, 255)">:=</span><span class="token plain"> workflow</span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token function" style="color:rgb(130, 170, 255)">GetSessionInfo</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">sessionCtx</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token function" style="color:rgb(130, 170, 255)">GetRecreateToken</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span></div></div></div></div></div><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="q--a"></a><a aria-hidden="true" tabindex="-1" class="hash-link" href="#q--a" title="Direct link to heading">#</a>Q &amp; A</h2><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="is-there-a-complete-example"></a><a aria-hidden="true" tabindex="-1" class="hash-link" href="#is-there-a-complete-example" title="Direct link to heading">#</a>Is there a complete example?</h3><p>Yes, the <a href="https://github.com/temporalio/temporal-go-samples/blob/master/cmd/samples/fileprocessing/workflow.go">file processing example</a> in the temporal-go-samples repo has been updated to use the session framework.</p><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="what-happens-to-my-activity-if-the-worker-dies"></a><a aria-hidden="true" tabindex="-1" class="hash-link" href="#what-happens-to-my-activity-if-the-worker-dies" title="Direct link to heading">#</a>What happens to my activity if the worker dies?</h3><p>If your activity has already been scheduled, it will be cancelled. If not, you will get a <code>workflow.ErrSessionFailed</code> error when you call <code>workflow.ExecuteActivity()</code>.</p><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="is-the-concurrent-session-limitation-per-process-or-per-host"></a><a aria-hidden="true" tabindex="-1" class="hash-link" href="#is-the-concurrent-session-limitation-per-process-or-per-host" title="Direct link to heading">#</a>Is the concurrent session limitation per process or per host?</h3><p>It&#x27;s per worker process, so make sure there&#x27;s only one worker process running on the host if you plan to use that feature.</p><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="future-work"></a><a aria-hidden="true" tabindex="-1" class="hash-link" href="#future-work" title="Direct link to heading">#</a>Future Work</h2><ul><li><p>Right now a session is considered failed if the worker process dies. However, for some use cases, you may only care whether worker host is alive or not. For these uses cases, the session should be automatically re-established if the worker process is restarted.</p></li><li><p>The current implementation assumes that all sessions are consuming the same type of resource and there&#x27;s only one global limitation. Our plan is to allow you to specify what type of resource your session will consume and enforce different limitations on different types of resources.</p></li></ul></div></article><div class="margin-vert--xl"><div class="row"><div class="col"><a href="https://github.com/temporalio/temporal-documentation-legacy-v2/blob/master/docs/go-sessions.md" target="_blank" rel="noreferrer noopener"><svg fill="currentColor" height="1.2em" width="1.2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 40 40" style="margin-right:0.3em;vertical-align:sub"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div></div></div><div class="margin-vert--lg"><nav class="pagination-nav"><div class="pagination-nav__item"><a class="pagination-nav__link" href="/docs/go-versioning"><div class="pagination-nav__link--sublabel">Previous</div><div class="pagination-nav__link--label">« Versioning</div></a></div><div class="pagination-nav__item pagination-nav__item--next"><a class="pagination-nav__link" href="/docs/go-distributed-cron"><div class="pagination-nav__link--sublabel">Next</div><div class="pagination-nav__link--label">Distributed CRON »</div></a></div></nav></div></div></div><div class="col col--3"><div class="tableOfContents_TbNY"><ul class="contents contents__left-border"><li><a href="#use-cases" class="contents__link">Use Cases</a></li><li><a href="#basic-usage" class="contents__link">Basic Usage</a><ul><li><a href="#sample-code" class="contents__link">Sample Code</a></li></ul></li><li><a href="#session-metadata" class="contents__link">Session Metadata</a></li><li><a href="#concurrent-session-limitation" class="contents__link">Concurrent Session Limitation</a></li><li><a href="#recreate-session" class="contents__link">Recreate Session</a></li><li><a href="#q--a" class="contents__link">Q &amp; A</a><ul><li><a href="#is-there-a-complete-example" class="contents__link">Is there a complete example?</a></li><li><a href="#what-happens-to-my-activity-if-the-worker-dies" class="contents__link">What happens to my activity if the worker dies?</a></li><li><a href="#is-the-concurrent-session-limitation-per-process-or-per-host" class="contents__link">Is the concurrent session limitation per process or per host?</a></li></ul></li><li><a href="#future-work" class="contents__link">Future Work</a></li></ul></div></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="row footer__links"><div class="col footer__col"><h4 class="footer__title">Docs</h4><ul class="footer__items"><li class="footer__item"><a class="footer__link-item" href="/docs/overview">Getting Started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/java-quick-start">Java SDK</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/go-quick-start">Go SDK</a></li></ul></div><div class="col footer__col"><h4 class="footer__title">Community</h4><ul class="footer__items"><li class="footer__item"><a class="footer__link-item" target="_blank" rel="noopener noreferrer" href="https://stackoverflow.com/questions/tagged/temporal-workflow">Stack Overflow</a></li><li class="footer__item"><a class="footer__link-item" target="_blank" rel="noopener noreferrer" href="https://join.slack.com/t/temporalio/shared_invite/zt-c1e99p8g-beF7~ZZW2HP6gGStXD8Nuw">Slack</a></li></ul></div><div class="col footer__col"><h4 class="footer__title">Social</h4><ul class="footer__items"><li class="footer__item"><a class="footer__link-item" target="_blank" rel="noopener noreferrer" href="https://github.com/temporalio/temporal">GitHub</a></li></ul></div></div><div class="text--center"><div>Copyright © 2020 Temporal Technologies Inc.  All rights reserved. Copyright © 2020 Uber Technologies, Inc.</div></div></div></footer>
 </div>
 
-<script src="/styles.adb4430b.js"></script>
+<script src="/styles.2e8c563f.js"></script>
 
-<script src="/runtime~main.445d8d31.js"></script>
+<script src="/runtime~main.1c0a9e01.js"></script>
 
-<script src="/main.2b1acf6e.js"></script>
+<script src="/main.a53066a6.js"></script>
 
-<script src="/1.f87fcd0b.js"></script>
+<script src="/1.e750d4d7.js"></script>
 
-<script src="/2.3bf60cdf.js"></script>
+<script src="/2.f5b74bcc.js"></script>
 
-<script src="/3.d9e1fa3e.js"></script>
+<script src="/3.1b025bac.js"></script>
 
-<script src="/1be78505.b5e0d2a4.js"></script>
+<script src="/1be78505.4747757c.js"></script>
 
-<script src="/20ac7829.cbfaea42.js"></script>
+<script src="/20ac7829.52f9a0c2.js"></script>
 
-<script src="/17896441.17f09171.js"></script>
+<script src="/17896441.3aca8210.js"></script>
 
-<script src="/11716ba2.210fcd79.js"></script>
+<script src="/11716ba2.f9bcba3e.js"></script>
 
 
 </body>
