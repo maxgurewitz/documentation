@@ -13,6 +13,13 @@
         <id>welcome</id>
         <link href="https://temporalio.github.io/blog/welcome"/>
         <updated>2019-05-30T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Blog features are powered by the blog plugin. Simply add files to the `blog` directory. It supports tags as well!]]></summary>
+        <summary type="html"><![CDATA[Blog features are powered by the blog plugin. Simply add files to the blog directory. It supports tags as well!]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Why We're Moving to Discourse]]></title>
+        <id>discourse</id>
+        <link href="https://temporalio.github.io/blog/discourse"/>
+        <updated>1970-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Why Temporal is moving to Discourse for our knowledge DB needs.]]></summary>
     </entry>
 </feed>

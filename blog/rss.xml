@@ -13,7 +13,14 @@
             <link>https://temporalio.github.io/blog/welcome</link>
             <guid>welcome</guid>
             <pubDate>Thu, 30 May 2019 00:00:00 GMT</pubDate>
-            <description><![CDATA[Blog features are powered by the blog plugin. Simply add files to the `blog` directory. It supports tags as well!]]></description>
+            <description><![CDATA[Blog features are powered by the blog plugin. Simply add files to the blog directory. It supports tags as well!]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Why We're Moving to Discourse]]></title>
+            <link>https://temporalio.github.io/blog/discourse</link>
+            <guid>discourse</guid>
+            <pubDate>Thu, 01 Jan 1970 00:00:00 GMT</pubDate>
+            <description><![CDATA[Why Temporal is moving to Discourse for our knowledge DB needs.]]></description>
         </item>
     </channel>
 </rss>
