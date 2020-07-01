@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[197],{299:function(a,e,n){"use strict";n.r(e);n(1);var t=n(0),r=n.n(t),o=n(2),c=(n(373),n(363),n(356),n(355));n(362),n(300);r.a.Fragment,r.a.Fragment,r.a.Fragment,r.a.Fragment,r.a.Fragment,r.a.Fragment;e.default=function(){const a=Object(c.a)(),{siteConfig:e={}}=a;return r.a.createElement(o.a,{to:"/docs/overview"})}}}]);
