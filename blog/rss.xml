@@ -4,7 +4,7 @@
         <title>Temporal Blog</title>
         <link>https://temporalio.github.io/blog</link>
         <description>Temporal Blog</description>
-        <lastBuildDate>Wed, 08 Jul 2020 22:31:13 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 01 Jan 1970 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2020 Temporal Technologies Inc.  All rights reserved. Copyright © 2020 Uber Technologies, Inc.</copyright>
@@ -12,7 +12,7 @@
             <title><![CDATA[Why We're Moving to Discourse]]></title>
             <link>https://temporalio.github.io/blog/discourse</link>
             <guid>discourse</guid>
-            <pubDate>Wed, 08 Jul 2020 22:31:13 GMT</pubDate>
+            <pubDate>Thu, 01 Jan 1970 00:00:00 GMT</pubDate>
             <description><![CDATA[Why Temporal is moving to Discourse for our knowledge DB needs.]]></description>
         </item>
     </channel>

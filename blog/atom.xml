@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://temporalio.github.io/blog</id>
     <title>Temporal Blog</title>
-    <updated>2020-07-08T22:31:13.420Z</updated>
+    <updated>1970-01-01T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://temporalio.github.io/blog"/>
     <subtitle>Temporal Blog</subtitle>
@@ -12,7 +12,7 @@
         <title type="html"><![CDATA[Why We're Moving to Discourse]]></title>
         <id>discourse</id>
         <link href="https://temporalio.github.io/blog/discourse"/>
-        <updated>2020-07-08T22:31:13.420Z</updated>
+        <updated>1970-01-01T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Why Temporal is moving to Discourse for our knowledge DB needs.]]></summary>
     </entry>
 </feed>
